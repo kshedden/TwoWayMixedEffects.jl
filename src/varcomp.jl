@@ -126,8 +126,8 @@ end
 function recode(ix)
     T = eltype(ix)
     uq = Dict{T,Int}()
-    for x in sort(unique(ix))
-        uq[x] = length(uq) + 1
+    for (i,x) in enumerate(sort(unique(ix)))
+        uq[x] = i
     end
     return [uq[x] for x in ix]
 end
@@ -136,10 +136,6 @@ function fit(::Type{TwoWayVarianceComponentsModel}, row::S, col::T, Y::U) where{
 
     if !(length(row) == length(col) == length(Y))
         error(@sprintf("row, col, and Y must have equal lengths (%d, %d, %d are not equal)", len(row), len(col), len(Y)))
-    end
-
-    if !(eltype(row)<:Integer && eltype(col)<:Integer)
-        error("row and col must contain integers")
     end
 
     rowi = recode(row)

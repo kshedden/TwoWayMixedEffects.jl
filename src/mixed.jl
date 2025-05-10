@@ -93,9 +93,8 @@ end
 
 function fit(::Type{TwoWayMixedEffectsModel}, X::R, y::S, row::T, col::U; nsketch=1000) where{R<:AbstractMatrix, S<:AbstractVector, T<:AbstractVector, U<:AbstractVector}
 
-    if !(eltype(row)<:Integer && eltype(col)<:Integer)
-        error("row and col must contain integers")
-    end
+    rowi = recode(row)
+    coli = recode(col)
 
     if !(eltype(X)<:AbstractFloat && eltype(y)<:AbstractFloat)
         error("X and y must contain floating point values")
@@ -107,7 +106,7 @@ function fit(::Type{TwoWayMixedEffectsModel}, X::R, y::S, row::T, col::U; nsketc
     resid = y - yhat
 
     # Estimate variance parameters using the residuals
-    mr = fit(TwoWayVarianceComponentsModel, row, col, resid)
+    mr = fit(TwoWayVarianceComponentsModel, rowi, coli, resid)
 
     # Estimate the vcov matrix using sketching.
     rowv = coef(mr)[1]

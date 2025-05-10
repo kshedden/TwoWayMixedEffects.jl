@@ -1,0 +1,13 @@
+name = "TwoWayMixedEffects"
+uuid = "4b8ceaa1-f617-41fc-bcc7-cd7a67105234"
+authors = ["kshedden <kshedden@umich.edu>"]
+version = "0.1.0"
+
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+PrettyTables = "08abe8d2-0d0c-5749-adfa-8a2ac140af0d"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+StatsAPI = "82ae8749-77ed-4fe6-ae5f-f523153014b0"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
